@@ -2,59 +2,35 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-let (:base_title) {"Rail App"}
+  subject { page }
 
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the content 'Rail App'" do
-      visit root_path
-      expect(page).to have_content('Rail App')
-    end
-
-     it "should have the right title 'Rail App | Home'" do
-      visit root_path
-      expect(page).to have_title("#{base_title} | Home")
-    end
+    it { should have_content('Rail App') }
+    it { should have_title(full_title('Home')) }
   end
 
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the content 'Help'" do
-      visit help_path
-      expect(page).to have_content('Help')
-    end
-
-    it "should have the right title 'Rail App | Help'" do
-      visit help_path
-      expect(page).to have_title("#{base_title} | Help")
-    end 
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
   end
 
+  describe "About page" do
+    before { visit about_path }
 
- describe "About Us" do
-
-    it "should have the content 'About'" do
-      visit about_path
-      expect(page).to have_content('About')
-    end
-
-    it "should have the right title 'Rail App | About'" do
-      visit about_path
-      expect(page).to have_title("#{base_title} | About")
-    end 
+    it { should have_content('About') }
+    it { should have_title(full_title('About')) }
   end
 
+  describe "Contact page" do
+    before { visit contact_path }
 
- describe "Contact" do
-
-    it "should have the content 'Contact'" do
-      visit contact_path
-      expect(page).to have_content('Contact')
-    end
-
-    it "should have the right title 'Rail App | Contact'" do
-      visit contact_path
-      expect(page).to have_title("#{base_title} | Contact")
-    end 
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
   end
 end
+
+
